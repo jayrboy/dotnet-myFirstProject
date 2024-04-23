@@ -29,14 +29,15 @@ namespace myFirstProject.Models
         //Get All Action
         public static List<Employee> GetAll(EmployeeContext db)
         {
-            List<Employee> result = db.Employees.Where(q => q.IsDelete != true).ToList();
+            // List<Employee> result = db.Employees.Where(q => q.IsDelete != true).ToList();
+            List<Employee> result = db.Employees.Include(i => i.Department).Where(q => q.IsDelete != true).ToList();
             return result;
         }
 
         //Get ID Action
         public static Employee GetById(EmployeeContext db, int id)
         {
-            Employee? result = db.Employees.Where(q => q.Id == id && q.IsDelete != true).FirstOrDefault();
+            Employee? result = db.Employees.Include(i => i.Department).Where(q => q.Id == id && q.IsDelete != true).FirstOrDefault();
             return result ?? new Employee();
         }
 

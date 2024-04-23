@@ -22,6 +22,7 @@ public class EmployeeController : ControllerBase
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
         public int? Salary { get; set; }
+        public int? DepartmentId { get; set; }
     }
 
     //Create
@@ -33,6 +34,7 @@ public class EmployeeController : ControllerBase
             Firstname = employeeCreate.Firstname,
             Lastname = employeeCreate.Lastname,
             Salary = employeeCreate.Salary,
+            DepartmentId = employeeCreate.DepartmentId,
         };
 
         employee = Employee.Create(_db, employee);
