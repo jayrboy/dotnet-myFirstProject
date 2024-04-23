@@ -77,3 +77,10 @@ dotnet ef dbcontext scaffold "Data Source=BUMBIM\SQLEXPRESS;Initial Catalog=Empl
 - OrderBy() น้อย ไป มาก
 - OrderByDescending() มาก ไป น้อย
 - ตัวอักษรหลักการเดียวกัน
+
+# One-to-many Relation API
+
+- เพิ่มตารางใหม่ แล้วผูก ID เข้าเป็น FK ให้ Employee
+- Scaffold ใหม่
+- สร้างไฟล์ DepartmentMetadata.cs , DepartmentController.cs และ action
+- ใช้รูปแบบเดียวกับ Employee

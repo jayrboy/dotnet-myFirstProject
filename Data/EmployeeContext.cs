@@ -16,6 +16,8 @@ public partial class EmployeeContext : DbContext
     {
     }
 
+    public virtual DbSet<Department> Departments { get; set; }
+
     public virtual DbSet<Employee> Employees { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -26,15 +28,30 @@ public partial class EmployeeContext : DbContext
     {
         modelBuilder.UseCollation("Thai_CI_AS");
 
+        modelBuilder.Entity<Department>(entity =>
+        {
+            entity.ToTable("Department");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<Employee>(entity =>
         {
             entity.ToTable("Employee");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            entity.Property(e => e.DepartmentId).HasColumnName("DepartmentID");
             entity.Property(e => e.Firstname).HasMaxLength(50);
             entity.Property(e => e.Lastname).HasMaxLength(50);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Department).WithMany(p => p.Employees)
+                .HasForeignKey(d => d.DepartmentId)
+                .HasConstraintName("FK_Employee_Department");
         });
 
         OnModelCreatingPartial(modelBuilder);
