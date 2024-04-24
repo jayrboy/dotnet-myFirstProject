@@ -108,3 +108,9 @@ dotnet add package EPPlus --version 7.1.1
 
 - เพิ่ม license ที่ appsettings.json
 - เพิ่ม endpoint export excel ที่ EmployeeController.cs
+
+```sh
+dotnet add package PdfSharpCore --version 1.3.63
+```
+
+- เพิ่ม endpoint export PDF ที่ EmployeeController.cs
