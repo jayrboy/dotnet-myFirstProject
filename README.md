@@ -93,3 +93,14 @@ dotnet ef dbcontext scaffold "Data Source=BUMBIM\SQLEXPRESS;Initial Catalog=Empl
 - scaffold models
 - create FileMetadata.cs , FileController.cs
 - test image.jpg
+
+# Export Word, Excel, PDF API
+
+```sh
+dotnet add package DocX --version 3.0.0
+```
+
+-
+-
+-
+-
