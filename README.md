@@ -126,3 +126,80 @@ dotnet add package System.IdentityModel.Tokens.Jwt
 - Implement JWT Login ที่ไฟล์ Program.cs
 - LoginController.cs
 - HelloWorldController.cs
+
+# Port Setting
+
+- How to change port?
+- Properties/launchSettings.json
+- http / https
+
+# API Spec
+
+- ติดตั้งไปตอนเริ่ม create project webapi แล้ว
+
+```sh
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 6.5.0
+```
+
+- Generate API Spec with Swashbuckle
+- myFirstProject.csproj
+
+```cs
+<PropertyGroup>
+  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  <NoWarn>$(NoWarn);1591</NoWarn>
+</PropertyGroup>
+```
+
+- Program.cs
+
+```cs
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Version = "v1",
+        Title = "My First Project API",
+        Description = "A simple example ASP.NET Core Web API",
+    });
+
+    // using System.Reflection;
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
+```
+
+- เพิ่ม XML EmployeeController.cs (CreateEmployee)
+
+````xml
+  /// <summary>
+  /// Create Employee
+  /// </summary>
+  /// <remarks>
+  /// Sample request:
+  /// ```json
+  /// POST /Employee
+  /// {
+  ///     "Firstname": "John",
+  ///     "Lastname": "Doe",
+  ///     "Salary": 18000,
+  ///     "DepartmentId":1
+  /// }
+  /// ```
+  /// </remarks>
+  /// <param name="employeeCreate"></param>
+  /// <returns></returns>
+  /// <response code="200">Create Employee Successfully</response>
+  /// <response code="400">Bad Request</response>
+  /// <response code="500">Internal Server Error</response>
+````
+
+- เพิ่มค่าเริ่มต้นให้กับ Attribute นั้นๆ
+
+```xml
+///
+///
+///
+///
+///
+```

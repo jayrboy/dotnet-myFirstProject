@@ -26,13 +26,73 @@ public class EmployeeController : ControllerBase
 
     public struct EmployeeCreate
     {
+        /// <summary>
+        /// Firstname of the Employee
+        /// </summary>
+        /// <example>John</example>
+        /// <required>true</required>
         public string? Firstname { get; set; }
+
+        /// <summary>
+        /// Lastname of the Employee
+        /// </summary>
+        /// <example>Doe</example>
+        /// <required>true</required>
         public string? Lastname { get; set; }
+
+        /// <summary>
+        /// Salary of the Employee
+        /// </summary>
+        /// <example>18000</example>
+        /// <required>true</required>
         public int? Salary { get; set; }
+
+        /// <summary>
+        /// DepartmentId of the Employee
+        /// </summary>
+        /// <example>1</example>
+        /// <required>true</required>
         public int? DepartmentId { get; set; }
     }
 
-    //Create
+    /// <summary>
+    /// Create Employee
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// ```json
+    /// POST /Employee
+    /// {
+    ///     "Firstname": "John",
+    ///     "Lastname": "Doe",
+    ///     "Salary": 18000,
+    ///     "DepartmentId":1
+    /// }
+    /// ```
+    /// </remarks>
+    /// <param name="employeeCreate"></param>
+    /// <returns></returns>
+    /// <response code="200">
+    /// Success
+    /// <br/>
+    /// <br/>
+    /// Example response:
+    ///  ```json
+    /// {
+    ///     "Code": 200,
+    ///     "Message": "Success",
+    ///     "Data": {
+    ///         "Id": 1,
+    ///         "Firstname": "John",
+    ///         "Lastname": "Doe",
+    ///         "Salary": 18000,
+    ///         "DepartmentId":1
+    ///     }
+    /// }
+    /// ```
+    /// </response>
+    /// <response code="400">Bad Request</response>
+    /// <response code="500">Internal Server Error</response>
     [HttpPost(Name = "CreateEmployee")]
     public ActionResult CreateEmployee(EmployeeCreate employeeCreate)
     {
