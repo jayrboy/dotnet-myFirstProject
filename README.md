@@ -114,3 +114,15 @@ dotnet add package PdfSharpCore --version 1.3.63
 ```
 
 - เพิ่ม endpoint export PDF ที่ EmployeeController.cs
+
+# JWT Login
+
+```sh
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+dotnet add package System.IdentityModel.Tokens.Jwt
+```
+
+- เพิ่ม "Jwt" ที่ไฟล์ appsettings.json
+- Implement JWT Login ที่ไฟล์ Program.cs
+- LoginController.cs
+- HelloWorldController.cs
