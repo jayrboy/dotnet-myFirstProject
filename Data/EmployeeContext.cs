@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using myFirstProject.Models;
+using File = myFirstProject.Models.File;
 
 namespace myFirstProject.Data;
 
@@ -21,6 +22,8 @@ public partial class EmployeeContext : DbContext
     public virtual DbSet<Department> Departments { get; set; }
 
     public virtual DbSet<Employee> Employees { get; set; }
+
+    public virtual DbSet<File> Files { get; set; }
 
     public virtual DbSet<Project> Projects { get; set; }
 
@@ -76,6 +79,16 @@ public partial class EmployeeContext : DbContext
             entity.HasOne(d => d.Department).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.DepartmentId)
                 .HasConstraintName("FK_Employee_Department");
+        });
+
+        modelBuilder.Entity<File>(entity =>
+        {
+            entity.ToTable("File");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            entity.Property(e => e.FileName).HasMaxLength(50);
+            entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Project>(entity =>

@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using myFirstProject.Data;
 using myFirstProject.Models;
 
-
 [ApiController]
 [Route("[controller]")]
 

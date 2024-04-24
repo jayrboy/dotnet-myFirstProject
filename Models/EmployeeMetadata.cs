@@ -1,8 +1,6 @@
 using myFirstProject.Data;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 
 namespace myFirstProject.Models
 {

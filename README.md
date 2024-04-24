@@ -88,3 +88,8 @@ dotnet ef dbcontext scaffold "Data Source=BUMBIM\SQLEXPRESS;Initial Catalog=Empl
 - ใช้รูปแบบเดียวกับ Employee
 
 # Upload File (24/4/2024)
+
+- create table (File)
+- scaffold models
+- create FileMetadata.cs , FileController.cs
+- test image.jpg
