@@ -100,7 +100,11 @@ dotnet ef dbcontext scaffold "Data Source=BUMBIM\SQLEXPRESS;Initial Catalog=Empl
 dotnet add package DocX --version 3.0.0
 ```
 
--
--
--
--
+- เพิ่ม endpoint export word ที่ EmployeeController.cs
+
+```sh
+dotnet add package EPPlus --version 7.1.1
+```
+
+- เพิ่ม license ที่ appsettings.json
+- เพิ่ม endpoint export excel ที่ EmployeeController.cs
