@@ -47,6 +47,8 @@ code .
 ```
 
 ```sh
+dotnet build
+
 dotnet ef dbcontext scaffold "Data Source=BUMBIM\SQLEXPRESS;Initial Catalog=Employee;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer --context-dir Data --output-dir Models --force
 ```
 
@@ -84,3 +86,5 @@ dotnet ef dbcontext scaffold "Data Source=BUMBIM\SQLEXPRESS;Initial Catalog=Empl
 - Scaffold ใหม่
 - สร้างไฟล์ DepartmentMetadata.cs , DepartmentController.cs และ action
 - ใช้รูปแบบเดียวกับ Employee
+
+# Upload File (24/4/2024)

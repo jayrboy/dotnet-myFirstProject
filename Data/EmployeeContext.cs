@@ -36,14 +36,20 @@ public partial class EmployeeContext : DbContext
         {
             entity.ToTable("Activity");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ActivityHeaderId).HasColumnName("ActivityHeaderID");
             entity.Property(e => e.CreateDate).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.ActivityHeader).WithMany(p => p.InverseActivityHeader)
+                .HasForeignKey(d => d.ActivityHeaderId)
+                .HasConstraintName("FK_Activity");
+
+            entity.HasOne(d => d.Project).WithMany(p => p.Activities)
+                .HasForeignKey(d => d.ProjectId)
+                .HasConstraintName("FK_Project");
         });
 
         modelBuilder.Entity<Department>(entity =>
@@ -76,11 +82,11 @@ public partial class EmployeeContext : DbContext
         {
             entity.ToTable("Project");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            entity.Property(e => e.EndDate).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });
 
