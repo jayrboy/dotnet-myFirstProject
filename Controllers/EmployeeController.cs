@@ -12,7 +12,7 @@ using Xceed.Words.NET;
 
 [ApiController]
 [Route("[controller]")]
-
+[Produces("application/json")]
 public class EmployeeController : ControllerBase
 {
     private EmployeeContext _db = new EmployeeContext();

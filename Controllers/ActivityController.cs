@@ -5,7 +5,7 @@ using myFirstProject.Models;
 
 [ApiController]
 [Route("[controller]")]
-
+[Produces("application/json")]
 public class ActivityController : ControllerBase
 {
     private EmployeeContext _db = new EmployeeContext();
@@ -22,11 +22,53 @@ public class ActivityController : ControllerBase
         public int? ProjectId { get; set; }
         public int? ActivityHeaderId { get; set; }
         public string? Name { get; set; }
-
         public virtual ICollection<Activity> InverseActivityHeader { get; set; } = new List<Activity>();
     }
 
-    //Create
+    /// <summary>
+    /// Create Activity
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// ```json
+    /// [
+    ///     {
+    ///         "name": "Act1",
+    ///         "projectId": 2,
+    ///         "inverseActivityHeader": [
+    ///             {
+    ///                 "name": "Act1.1",
+    ///                 "projectId": 2
+    ///             }
+    ///         ]
+    ///     },
+    ///     {
+    ///         "name": "Act2",
+    ///         "projectId": 2,
+    ///         "inverseActivityHeader": [
+    ///             {
+    ///                 "name": "Act2.1",
+    ///                 "projectId": 2
+    ///             },
+    ///             {
+    ///                 "name": "Act2.2",
+    ///                 "projectId": 2,
+    ///                 "inverseActivityHeader": [
+    ///                     {
+    ///                         "name": "Act2.2.1",
+    ///                         "projectId": 2
+    ///                     }
+    ///                 ]
+    ///             }
+    ///         ]
+    ///     }
+    /// ]
+    /// ```
+    /// </remarks>
+    /// <param name="activitiesRequest"></param>
+    /// <returns></returns>
+    /// <response code="400">Bad Request</response>
+    /// <response code="500">Internal Server Error</response>
     [HttpPost("Create", Name = "CreateActivity")]
     public ActionResult<Response> Create(List<ActivityCreateRequest> activitiesRequest)
     {

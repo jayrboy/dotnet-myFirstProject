@@ -6,6 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class HelloWorldController : ControllerBase
 {
+
+    /// <summary>
+    /// Hello World (Login Jwt)
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public IActionResult Get()
     {

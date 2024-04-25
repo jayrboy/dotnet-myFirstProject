@@ -5,7 +5,7 @@ using myFirstProject.Models;
 
 [ApiController]
 [Route("[controller]")]
-
+[Produces("application/json")]
 public class DepartmentController : ControllerBase
 {
     private EmployeeContext _db = new EmployeeContext();

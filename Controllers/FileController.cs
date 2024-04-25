@@ -6,7 +6,6 @@ namespace myFirstProject.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-
 public class FileController : ControllerBase
 {
     private EmployeeContext _db = new EmployeeContext();
@@ -20,13 +19,11 @@ public class FileController : ControllerBase
         _hostingEnvironment = environment;
     }
 
-    public struct FileCreate
-    {
-        public string? FileName { get; set; }
-        public string? FilePath { get; set; }
-    }
-
-    //Upload File
+    /// <summary>
+    /// Upload
+    /// </summary>
+    /// <param name="formFile"></param>
+    /// <returns></returns>
     [HttpPost(Name = "UploadFile")]
     public ActionResult UploadFile(IFormFile formFile)
     {

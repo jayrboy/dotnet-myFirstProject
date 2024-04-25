@@ -17,12 +17,27 @@ namespace JwtInDotnetCore.Controllers
             _config = config;
         }
 
+        /// <summary>
+        /// Login Jwt (POSTMAN)
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// ```json
+        /// POST /api/Login 
+        /// {
+        ///     "email": "testUser",
+        ///     "password": "testPassword"
+        /// }
+        /// ```
+        /// </remarks>
+        /// <param name="loginRequest"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post([FromBody] LoginRequest loginRequest)
         {
             //your login for process
             //if login username and password are correct then proceed to generate token
-            if (loginRequest.Password == "testPassword")
+            if (loginRequest.Email == "testUser" && loginRequest.Password == "testPassword")
             {
                 var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
                 var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
